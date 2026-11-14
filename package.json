@@ -1,0 +1,60 @@
+{
+ "name": "incident-management",
+ "version": "1.0.0",
+ "type": "module",
+ "dependencies": {
+  "@cap-js/hana": "^3",
+  "@sap/ams": "^3",
+  "@sap/cds": "^10.2.2",
+  "@sap/xssec": "^4"
+ },
+ "devDependencies": {
+  "@cap-js/cds-test": "^1.0.2",
+  "@cap-js/sqlite": "^3",
+  "@sap/ams-dev": "^3",
+  "cds-plugin-ui5": "^0.17.0",
+  "jest": "^30.5.2"
+ },
+ "scripts": {
+  "start": "cds-serve",
+  "test": "jest --silent test/test.js",
+  "watch-incidentscw46": "cds watch --open ns.incidentscw46/index.html?sap-ui-xx-viewCache=false --livereload false"
+ },
+ "cds": {
+  "requires": {
+   "[development]": {
+    "auth": {
+     "kind": "mocked",
+     "users": {
+      "alice": {
+       "roles": [
+        "support"
+       ]
+      },
+      "bob": {
+       "roles": [
+        "admin"
+       ]
+      }
+     }
+    }
+   },
+   "[production]": {
+    "auth": "ias"
+   },
+   "destinations": true,
+   "html5-repo": true,
+   "workzone": true
+  }
+ },
+ "private": true,
+ "workspaces": [
+  "app/*"
+ ],
+ "sapux": [
+  "app/incidentscw46"
+ ],
+ "engines": {
+  "node": "^24"
+ }
+}
